@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sw.app.mapper.RoundMapper">
+	
+	<select id="listRoundEpl" resultType="sw.app.domain.RoundVO">
+		select b.*, a.name, a.position
+		from player_epl a
+		right join round_epl b
+		on b.backnum = a.backnum and b.club = a.club
+		where (b.club = #{home} or b.club = #{away}) and b.round = #{round}
+		order by intime, outtime, backnum
+	</select>
+
+</mapper>

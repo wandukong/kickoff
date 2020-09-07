@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sw.app.mapper.TransferMapper">
+	
+	<select id="listAllTrans" resultType="sw.app.domain.TransferVO">
+		select *
+		from transfer
+		order by price desc
+	</select>
+	
+	<select id="listTransTop10" resultType="sw.app.domain.TransferVO">
+		select *
+		from transfer
+		order by price desc
+		limit 10
+	</select>
+	
+	
+</mapper>

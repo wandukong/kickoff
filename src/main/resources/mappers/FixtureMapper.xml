@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sw.app.mapper.FixtureMapper">
+	
+	<select id="listFixtureEpl" resultType="sw.app.domain.FixtureVO">
+		select b.home, b.score, b.away, b.date, b.time, b.round, a.stadium
+		from club_epl a
+		right join fixture_epl b
+		on a.club = b.home
+		where date like CONCAT('%-',#{keyword},'-%')
+		order by date, time
+	</select>
+	
+	<select id="listFixtureChamsGS" resultType="sw.app.domain.FixtureVO">
+		select b.home, b.score, b.away, b.date, b.time, b.round
+		from fixture_chams b
+		inner join chams_group a
+		on b.home = a.club
+        order by b.date, a.groupf
+	</select>
+	
+	<select id="listFixtureChams16" resultType="sw.app.domain.FixtureVO">
+		select *
+		from fixture_chams
+		where round = 16
+		order by date
+	</select>
+	
+	<select id="listFixtureChams8" resultType="sw.app.domain.FixtureVO">
+		select *
+		from fixture_chams 
+		where round = 8
+		order by date
+	</select>
+	
+	<select id="listFixtureChams4" resultType="sw.app.domain.FixtureVO">
+		select *
+		from fixture_chams
+		where round = 4
+		order by date
+	</select>
+	
+	<select id="listFixtureChamsF" resultType="sw.app.domain.FixtureVO">
+		select *
+		from fixture_chams
+		where round = 2
+		order by date
+	</select>
+	
+</mapper>

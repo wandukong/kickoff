@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sw.app.mapper.PlayerMapper">
+		
+	<select id="listPlayerEpl" resultType="sw.app.domain.PlayerVO">
+		select b.name, b.backnum, b.position, b.country, b.birth, b.height, b.weight, a.stadium
+		from club_epl a
+		right join player_epl b
+		on a.club = b.club
+		where b.club = #{club}
+		order by backNum
+	</select>
+	
+
+</mapper>

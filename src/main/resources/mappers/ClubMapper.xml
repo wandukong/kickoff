@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sw.app.mapper.ClubMapper">
+	
+	<select id="listAllEpl" resultType="sw.app.domain.ClubVO">
+		select *
+		from club_epl
+		order by win*3 + draw desc, gf-ga desc, gf desc
+	</select>
+	
+	<select id="listAllLaliga" resultType="sw.app.domain.ClubVO">
+		select *
+		from club_laliga
+		order by win*3 + draw desc, gf-ga desc, gf desc
+	</select>
+	
+	<select id="listAllBundesliga" resultType="sw.app.domain.ClubVO">
+		select *
+		from club_bundesliga
+		order by win*3 + draw desc, gf-ga desc, gf desc
+	</select>
+	
+	<select id="listAllSeriea" resultType="sw.app.domain.ClubVO">
+		select *
+		from club_seriea
+		order by win*3 + draw desc, gf-ga desc, gf desc
+	</select>
+	
+	<select id="listChamsGroup" resultType="sw.app.domain.ClubVO">
+		select *
+		from chams_group
+		order by groupf, win*3 + draw desc, gf-ga desc, gf desc
+	</select>
+	
+</mapper>
